@@ -12,5 +12,15 @@ public class DataEnemy : MonoBehaviour
     private void update()
     {
         enemyHealthBar.value = enemyHealth;
+
+        if (enemyHealth <= 0)
+        {
+            Debug.Log("ENEMY DEFEATED");
+            Destroy(gameObject);
+        }
+
     }
+
+
+
 }

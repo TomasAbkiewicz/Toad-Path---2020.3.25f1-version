@@ -477,6 +477,33 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &179807601
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 179807598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ae1ef9e06d0254419f9c921838440ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  swordDamage: 30
+  Enemy: {fileID: 719655674}
+--- !u!65 &179807602
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 179807598}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 18.1285, z: 4.7541122}
+  m_Center: {x: 0, y: 2.2997904, z: -1.8770561}
 --- !u!1 &247991368
 GameObject:
   m_ObjectHideFlags: 0
@@ -1183,6 +1210,7 @@ GameObject:
   - component: {fileID: 719655678}
   - component: {fileID: 719655677}
   - component: {fileID: 719655676}
+  - component: {fileID: 719655681}
   - component: {fileID: 719655675}
   m_Layer: 0
   m_Name: Enemy
@@ -1320,6 +1348,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &719655681
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 719655674}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d98c0eb16f081a4b9cef19be33586c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyHealth: 100
+  enemyHealthBar: {fileID: 1445952576}
 --- !u!1 &787912670
 GameObject:
   m_ObjectHideFlags: 0
@@ -2174,7 +2216,7 @@ PrefabInstance:
       objectReference: {fileID: 1623225821}
     - target: {fileID: 3699741182409179907, guid: c32821269265f7d4bb3fe11fa1ee145c, type: 3}
       propertyPath: damage
-      value: 30
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5841206444852995143, guid: c32821269265f7d4bb3fe11fa1ee145c, type: 3}
       propertyPath: m_IsTrigger
