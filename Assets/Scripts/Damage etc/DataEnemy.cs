@@ -8,8 +8,7 @@ public class DataEnemy : MonoBehaviour
     public int enemyHealth;
     public Slider enemyHealthBar;
 
-
-    private void update()
+    private void Update()
     {
         enemyHealthBar.value = enemyHealth;
 
@@ -18,7 +17,6 @@ public class DataEnemy : MonoBehaviour
             Debug.Log("ENEMY DEFEATED");
             Destroy(gameObject);
         }
-
     }
 
 

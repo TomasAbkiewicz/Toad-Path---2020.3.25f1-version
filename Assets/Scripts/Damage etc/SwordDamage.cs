@@ -4,14 +4,17 @@ using UnityEngine;
 
 public class SwordDamage : MonoBehaviour
 {
-    public int swordDamage;
-    public GameObject Enemy;
+    public int swordDamage = 10;
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "whatIsEnemy")
+        if (other.CompareTag("whatIsEnemy"))
         {
-            Enemy.GetComponent<DataEnemy>().enemyHealth -= swordDamage;
+            DataEnemy enemy = other.GetComponent<DataEnemy>();
+            if (enemy != null)
+            {
+                enemy.enemyHealth -= swordDamage;
+            }
         }
     }
 
