@@ -17,8 +17,7 @@ public class DataEnemy : MonoBehaviour
             Debug.Log("ENEMY DEFEATED");
             Destroy(gameObject);
         }
+
     }
-
-
 
 }
