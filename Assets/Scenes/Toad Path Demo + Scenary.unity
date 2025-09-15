@@ -437,36 +437,6 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!1 &425880458
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 425880459}
-  m_Layer: 0
-  m_Name: Robot
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &425880459
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 425880458}
-  m_LocalRotation: {x: -0, y: -0.7071067, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 15.973237, y: 0.15718281, z: 14.0689945}
-  m_LocalScale: {x: 0.35914382, y: 0.35914385, z: 0.35914382}
-  m_Children: []
-  m_Father: {fileID: 641422266}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &476418634 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5996930180912165167, guid: 24d1aa3e1e4272e4a9931b8f2b4b9e3e, type: 3}
@@ -657,7 +627,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1144151063}
-  - {fileID: 425880459}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
