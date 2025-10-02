@@ -25,7 +25,7 @@ public class MeleeEnemyAI : MonoBehaviour
     {
         player = GameObject.Find("PlayerObj").transform;
         agent = GetComponent<NavMeshAgent>();
-        dataEnemy = GetComponent<DataEnemy>(); // <- MUY IMPORTANTE
+        dataEnemy = GetComponent<DataEnemy>(); // <- MUY IMPORTANTE 
     }
 
     private void Update()
