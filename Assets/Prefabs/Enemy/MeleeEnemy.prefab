@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 8852564909542829782}
   - component: {fileID: 1988774041260610370}
   - component: {fileID: 6541437149837073923}
+  - component: {fileID: 8909977225323064530}
   m_Layer: 0
   m_Name: MeleeEnemy
   m_TagString: whatIsEnemy
@@ -112,6 +113,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4b9d64063173cf46ba930b801362306, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  agent: {fileID: 6541437149837073923}
+  player: {fileID: 0}
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 2048
+  whatIsPlayer:
+    serializedVersion: 2
+    m_Bits: 8192
+  walkPoint: {x: 0, y: 0, z: 0}
+  walkPointRange: 5
+  sightRange: 10
+  attackRange: 2
+  playerInSightRange: 0
+  playerInAttackRange: 0
 --- !u!114 &1988774041260610370
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -124,7 +139,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d98c0eb16f081a4b9cef19be33586c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyHealth: 0
+  enemyHealth: 100
   enemyHealthBar: {fileID: 0}
 --- !u!195 &6541437149837073923
 NavMeshAgent:
@@ -148,6 +163,20 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &8909977225323064530
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3777451186662923212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bffd29fa9da53a49867a03d7571b6d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  meleeDamage: 15
+  attackCooldown: 1.2
 --- !u!1 &7001184862929651106
 GameObject:
   m_ObjectHideFlags: 0

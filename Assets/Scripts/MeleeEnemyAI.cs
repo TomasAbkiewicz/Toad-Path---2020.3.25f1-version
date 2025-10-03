@@ -13,30 +13,33 @@ public class MeleeEnemyAI : MonoBehaviour
     // Patrullaje
     public Vector3 walkPoint;
     bool walkPointSet;
-    public float walkPointRange;
+    public float walkPointRange = 5f;
 
     // Rango de detección
-    public float sightRange, attackRange;
+    public float sightRange = 10f;
+    public float attackRange = 2f;
     public bool playerInSightRange, playerInAttackRange;
 
-    private DataEnemy dataEnemy;
+    private DataEnemyMelee dataEnemy; //  ahora apunta al script correcto
 
     private void Awake()
     {
-        player = GameObject.Find("PlayerObj").transform;
+        player = GameObject.Find("PlayerObj")?.transform;
         agent = GetComponent<NavMeshAgent>();
-        dataEnemy = GetComponent<DataEnemy>(); // <- MUY IMPORTANTE 
+        dataEnemy = GetComponent<DataEnemyMelee>(); //  correcto
+
+        if (agent != null)
+            agent.stoppingDistance = Mathf.Max(0.5f, attackRange * 0.9f);
     }
 
     private void Update()
     {
-        // Detectar jugador
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
 
         if (!playerInSightRange && !playerInAttackRange) Patroling();
-        if (playerInSightRange && !playerInAttackRange) ChasePlayer();
-        if (playerInSightRange && playerInAttackRange) AttackPlayer();
+        else if (playerInSightRange && !playerInAttackRange) ChasePlayer();
+        else if (playerInSightRange && playerInAttackRange) AttackPlayer();
     }
 
     private void Patroling()
@@ -46,10 +49,7 @@ public class MeleeEnemyAI : MonoBehaviour
         if (walkPointSet)
             agent.SetDestination(walkPoint);
 
-        Vector3 distanceToWalkPoint = transform.position - walkPoint;
-
-        // Cuando llega al punto
-        if (distanceToWalkPoint.magnitude < 1f)
+        if (Vector3.Distance(transform.position, walkPoint) < 1f)
             walkPointSet = false;
     }
 
@@ -66,19 +66,20 @@ public class MeleeEnemyAI : MonoBehaviour
 
     private void ChasePlayer()
     {
-        agent.SetDestination(player.position);
+        if (agent != null && player != null)
+            agent.SetDestination(player.position);
     }
 
     private void AttackPlayer()
     {
-        // Se queda quieto para atacar
-        agent.SetDestination(transform.position);
+        if (agent != null) agent.SetDestination(transform.position);
+        if (player != null) transform.LookAt(player);
 
-        // Mirar al jugador
-        transform.LookAt(player);
-
-        // Llamar ataque melee del DataEnemy
-        dataEnemy.MeleeAttack();
+        float dist = Vector3.Distance(transform.position, player.position);
+        if (dist <= attackRange + 0.2f)
+        {
+            dataEnemy.MeleeAttackOnPlayer(); //  ahora llama al método del DataEnemyMelee
+        }
     }
 
     private void OnDrawGizmosSelected()

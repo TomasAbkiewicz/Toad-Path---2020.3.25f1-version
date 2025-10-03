@@ -1,59 +1,45 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class DataEnemyMelee : MonoBehaviour
 {
-    [Header("Stats del Enemigo")]
-    public int enemyHealth = 100;
-    public int meleeDamage = 10;
-    public float attackCooldown = 1.5f;
-    private bool alreadyAttacked = false;
+    public int healthEnemy = 50;  // vida del enemigo
+    public int damage = 10;       // daño que inflige al jugador
 
-    [Header("UI")]
-    public Slider enemyHealthBar;
-
-    private Transform player;
-    private DataPlayer playerData;
+    // referencia al jugador
+    private DataPlayer player;
 
     private void Start()
     {
-        player = GameObject.Find("PlayerObj").transform;
-        playerData = player.GetComponent<DataPlayer>();
+        // buscamos al Player en la escena
+        player = FindObjectOfType<DataPlayer>();
     }
 
     private void Update()
     {
-        if (enemyHealthBar != null)
-            enemyHealthBar.value = enemyHealth;
-
-        if (enemyHealth <= 0)
+        // si la vida llega a 0 o menos => enemigo muere
+        if (healthEnemy <= 0)
         {
-            Debug.Log("ENEMY DEFEATED");
+            Debug.Log("Enemy muerto");
             Destroy(gameObject);
         }
     }
 
-    public void MeleeAttack()
+    // --- enemigo recibe daño ---
+    public void TakeDamage(int dmg)
     {
-        if (!alreadyAttacked && playerData != null)
+        healthEnemy -= dmg;
+        Debug.Log("Enemy recibió " + dmg + " de daño. Vida actual: " + healthEnemy);
+    }
+
+    // --- ataque melee contra el player ---
+    public void MeleeAttackOnPlayer()
+    {
+        if (player != null)
         {
-            Debug.Log("Enemy hits player with melee!");
-            playerData.TakeDamage(meleeDamage);
-
-            alreadyAttacked = true;
-            Invoke(nameof(ResetAttack), attackCooldown);
+            player.TakeDamage(damage);
+            Debug.Log("Enemy golpeó al jugador e hizo " + damage + " de daño.");
         }
-    }
-
-    private void ResetAttack()
-    {
-        alreadyAttacked = false;
-    }
-
-    public void TakeDamage(int damage)
-    {
-        enemyHealth -= damage;
     }
 }
