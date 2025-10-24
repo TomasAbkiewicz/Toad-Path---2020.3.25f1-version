@@ -10,37 +10,39 @@ public class MeleeEnemyAI : MonoBehaviour
 
     public LayerMask whatIsGround, whatIsPlayer;
 
-    // Patrullaje
+ 
     public Vector3 walkPoint;
     bool walkPointSet;
-    public float walkPointRange = 5f;
+    public float walkPointRange;
 
-    // Rango de detección
-    public float sightRange = 10f;
-    public float attackRange = 2f;
+
+    public float timeBetweenAttacks;
+    bool alreadyAttacked;
+    public int damage = 10; 
+    public float attackRadius = 2f; 
+    public Transform attackPoint; 
+
+
+    public float sightRange, attackRange;
     public bool playerInSightRange, playerInAttackRange;
-
-    private DataEnemyMelee dataEnemy; //  ahora apunta al script correcto
 
     private void Awake()
     {
-        player = GameObject.Find("PlayerObj")?.transform;
+        player = GameObject.Find("PlayerObj").transform;
         agent = GetComponent<NavMeshAgent>();
-        dataEnemy = GetComponent<DataEnemyMelee>(); //  correcto
-
-        if (agent != null)
-            agent.stoppingDistance = Mathf.Max(0.5f, attackRange * 0.9f);
     }
 
     private void Update()
     {
+
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
 
         if (!playerInSightRange && !playerInAttackRange) Patroling();
-        else if (playerInSightRange && !playerInAttackRange) ChasePlayer();
-        else if (playerInSightRange && playerInAttackRange) AttackPlayer();
+        if (playerInSightRange && !playerInAttackRange) ChasePlayer();
+        if (playerInAttackRange && playerInSightRange) AttackPlayer();
     }
+
 
     private void Patroling()
     {
@@ -49,7 +51,9 @@ public class MeleeEnemyAI : MonoBehaviour
         if (walkPointSet)
             agent.SetDestination(walkPoint);
 
-        if (Vector3.Distance(transform.position, walkPoint) < 1f)
+        Vector3 distanceToWalkPoint = transform.position - walkPoint;
+
+        if (distanceToWalkPoint.magnitude < 1f)
             walkPointSet = false;
     }
 
@@ -64,29 +68,60 @@ public class MeleeEnemyAI : MonoBehaviour
             walkPointSet = true;
     }
 
+
     private void ChasePlayer()
     {
-        if (agent != null && player != null)
-            agent.SetDestination(player.position);
+        agent.SetDestination(player.position);
     }
+
 
     private void AttackPlayer()
     {
-        if (agent != null) agent.SetDestination(transform.position);
-        if (player != null) transform.LookAt(player);
+        agent.SetDestination(transform.position);
+        transform.LookAt(player);
 
-        float dist = Vector3.Distance(transform.position, player.position);
-        if (dist <= attackRange + 0.2f)
+        if (!alreadyAttacked)
         {
-            dataEnemy.MeleeAttackOnPlayer(); //  ahora llama al método del DataEnemyMelee
+            // Detectar si el jugador está dentro del rango de golpe
+            Collider[] hitPlayers = Physics.OverlapSphere(attackPoint.position, attackRadius, whatIsPlayer);
+
+            foreach (Collider hit in hitPlayers)
+            {
+                if (hit.CompareTag("whatIsPlayer"))
+                {
+
+                    DataPlayer playerData = hit.GetComponent<DataPlayer>();
+                    if (playerData != null)
+                    {
+                        playerData.healthPlayer -= damage;
+                        Debug.Log("Golpeaste al jugador, daño: " + damage);
+                    }
+                }
+            }
+
+            alreadyAttacked = true;
+            Invoke(nameof(ResetAttack), timeBetweenAttacks);
         }
     }
+
+    private void ResetAttack()
+    {
+        alreadyAttacked = false;
+    }
+
 
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, attackRange);
+
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, sightRange);
+
+        if (attackPoint != null)
+        {
+            Gizmos.color = Color.magenta;
+            Gizmos.DrawWireSphere(attackPoint.position, attackRadius);
+        }
     }
 }
