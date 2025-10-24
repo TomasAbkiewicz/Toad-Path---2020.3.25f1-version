@@ -316,6 +316,7 @@ GameObject:
   - component: {fileID: 2935664312103860267}
   - component: {fileID: 2935664312103860694}
   - component: {fileID: 2935664312103860268}
+  - component: {fileID: 8256212042203288975}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: whatIsEnemy
@@ -336,6 +337,7 @@ Transform:
   m_Children:
   - {fileID: 2935664312410718248}
   - {fileID: 2935664311776547792}
+  - {fileID: 8277681956034413124}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -424,8 +426,6 @@ MonoBehaviour:
     m_Bits: 8192
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointRange: 5
-  timeBetweenAttacks: 1
-  projectile: {fileID: 0}
   sightRange: 20
   attackRange: 12
   playerInSightRange: 0
@@ -466,6 +466,21 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &8256212042203288975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2935664312103860269}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b486e9b8908bb64d8012d187069fba2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectile: {fileID: 6856823063662307837, guid: c32821269265f7d4bb3fe11fa1ee145c, type: 3}
+  shootPoint: {fileID: 8277681956034413124}
+  timeBetweenAttacks: 1
 --- !u!1 &2935664312370878388
 GameObject:
   m_ObjectHideFlags: 0
@@ -747,3 +762,33 @@ RectTransform:
   m_AnchoredPosition: {x: 0.5, y: 0}
   m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &9043473367916020897
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8277681956034413124}
+  m_Layer: 0
+  m_Name: ShootPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8277681956034413124
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9043473367916020897}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2935664312103860695}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
