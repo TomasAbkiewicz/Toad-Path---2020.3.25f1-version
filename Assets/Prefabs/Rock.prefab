@@ -129,7 +129,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 30
-  Player: {fileID: 5996930178976274104, guid: 24d1aa3e1e4272e4a9931b8f2b4b9e3e, type: 3}
+  Player: {fileID: 0}
 --- !u!65 &5841206444852995143
 BoxCollider:
   m_ObjectHideFlags: 0
