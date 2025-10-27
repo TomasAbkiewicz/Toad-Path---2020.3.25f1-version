@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Material.006
+  m_Name: armadura
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -73,18 +73,6 @@ Material:
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-<<<<<<< Updated upstream
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
-    - _Color: {r: 0.5066599, g: 0.1409904, b: 0.12808281, a: 1}
-=======
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
->>>>>>> a496973237d65c346ecdfb75455ac27492230470
-=======
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
->>>>>>> 893863a97dabe7d7c0650e73b1d4c566d0b61b8d
->>>>>>> Stashed changes
+    - _Color: {r: 0.4666599, g: 0.4666599, b: 0.4666599, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
   m_BuildTextureStacks: []
