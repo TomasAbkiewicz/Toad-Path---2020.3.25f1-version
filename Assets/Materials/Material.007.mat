@@ -74,8 +74,11 @@ Material:
     - _ZWrite: 1
     m_Colors:
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     - _Color: {r: 1, g: 1, b: 1, a: 1}
 =======
+=======
+>>>>>>> Stashed changes
 <<<<<<< HEAD
 <<<<<<< HEAD
     - _Color: {r: 0, g: 0, b: 0, a: 1}
@@ -85,6 +88,9 @@ Material:
 =======
     - _Color: {r: 1, g: 1, b: 1, a: 1}
 >>>>>>> 893863a97dabe7d7c0650e73b1d4c566d0b61b8d
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
   m_BuildTextureStacks: []
