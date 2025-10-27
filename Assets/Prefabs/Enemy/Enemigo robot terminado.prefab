@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: -4193788519921500811}
   - component: {fileID: 6948351813263794296}
   - component: {fileID: 5411690017305917698}
+  - component: {fileID: 8457174767079726836}
   m_Layer: 0
   m_Name: Enemigo robot terminado
   m_TagString: whatIsEnemy
@@ -121,6 +122,7 @@ MonoBehaviour:
   attackRange: 2
   playerInSightRange: 0
   playerInAttackRange: 0
+  anim: {fileID: 8457174767079726836}
 --- !u!195 &6948351813263794296
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -157,6 +159,25 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -5495902117074765545, guid: a2fb858e87a76e740bb9ae0a2b4aa795, type: 3}
+--- !u!95 &8457174767079726836
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4553848116225881925}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 32c56d6b00cde924ba65048e76a87c10, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &5031741719323060664
 GameObject:
   m_ObjectHideFlags: 0

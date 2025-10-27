@@ -1046,6 +1046,30 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2935664312103860269, guid: 965489d79d89ecd4eab8c23b2a52acb9, type: 3}
   m_PrefabInstance: {fileID: 611120729}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &889154983 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3777451186662923212, guid: b6d82c0044a3c3c47920d1a008220106, type: 3}
+  m_PrefabInstance: {fileID: 316255791105151246}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &889154984
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 889154983}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 32c56d6b00cde924ba65048e76a87c10, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &895085658
 GameObject:
   m_ObjectHideFlags: 0
@@ -2888,6 +2912,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8852564909542829782, guid: b6d82c0044a3c3c47920d1a008220106, type: 3}
+      propertyPath: anim
+      value: 
+      objectReference: {fileID: 889154984}
     - target: {fileID: 8852564909542829782, guid: b6d82c0044a3c3c47920d1a008220106, type: 3}
       propertyPath: player
       value: 
