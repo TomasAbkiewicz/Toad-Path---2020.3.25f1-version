@@ -82,7 +82,7 @@ public class MeleeEnemyAI : MonoBehaviour
 
         if (!alreadyAttacked)
         {
-            // Detectar si el jugador estï¿½ dentro del rango de golpe
+            // Detectar si el jugador está dentro del rango de golpe
             Collider[] hitPlayers = Physics.OverlapSphere(attackPoint.position, attackRadius, whatIsPlayer);
 
             foreach (Collider hit in hitPlayers)
@@ -94,7 +94,7 @@ public class MeleeEnemyAI : MonoBehaviour
                     if (playerData != null)
                     {
                         playerData.healthPlayer -= damage;
-                        Debug.Log("Golpeaste al jugador, daï¿½o: " + damage);
+                        Debug.Log("Golpeaste al jugador, daño: " + damage);
                     }
                 }
             }
