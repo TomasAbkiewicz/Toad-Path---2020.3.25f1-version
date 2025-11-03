@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 5411690017305917698}
   - component: {fileID: -4193788519921500811}
   - component: {fileID: 8457174767079726836}
+  - component: {fileID: 5739273847158674428}
   m_Layer: 0
   m_Name: Enemigo robot terminado
   m_TagString: whatIsEnemy
@@ -178,6 +179,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &5739273847158674428
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4553848116225881925}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d98c0eb16f081a4b9cef19be33586c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyHealth: 150
+  enemyHealthBar: {fileID: 0}
 --- !u!1 &5031741719323060664
 GameObject:
   m_ObjectHideFlags: 0
