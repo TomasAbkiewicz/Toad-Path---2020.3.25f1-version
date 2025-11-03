@@ -11,8 +11,7 @@ public class EnemyAI : MonoBehaviour
 
     public LayerMask whatIsGround, whatIsPlayer;
 
-
-
+    public Transform shootingPoint;
 
     public Vector3 walkPoint;
     bool walkPointSet;
@@ -83,11 +82,15 @@ public class EnemyAI : MonoBehaviour
 
         if (!alreadyAttacked)
         {
+            // usa shootingPoint si está asignado, sino usa la posición/rotación del enemigo
+            Vector3 spawnPos = shootingPoint != null ? shootingPoint.position : transform.position;
+            Quaternion spawnRot = shootingPoint != null ? shootingPoint.rotation : transform.rotation;
+            Vector3 forward = shootingPoint != null ? shootingPoint.forward : transform.forward;
+            Vector3 up = shootingPoint != null ? shootingPoint.up : transform.up;
 
-            Rigidbody rb = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
-            rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
-            rb.AddForce(transform.up * 8f, ForceMode.Impulse);
-
+            Rigidbody rb = Instantiate(projectile, spawnPos, spawnRot).GetComponent<Rigidbody>();
+            rb.AddForce(forward * 32f, ForceMode.Impulse);
+            rb.AddForce(up * 8f, ForceMode.Impulse);
 
             alreadyAttacked = true;
             Invoke(nameof(ResetAttack), timeBetweenAttacks);

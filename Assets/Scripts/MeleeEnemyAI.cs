@@ -22,14 +22,12 @@ public class MeleeEnemyAI : MonoBehaviour
     public float sightRange, attackRange;
     public bool playerInSightRange, playerInAttackRange;
 
-    public Animator anim; // 👈 ahora público, lo asignás a mano
+    public Animator anim; 
 
     private void Awake()
     {
         player = GameObject.Find("PlayerObj").transform;
-        agent = GetComponent<NavMeshAgent>();
-        // anim = GetComponent<Animator>(); 👈 esto ya no es necesario
-    }
+        agent = GetComponent<NavMeshAgent>();    }
 
     private void Update()
     {

@@ -922,6 +922,10 @@ PrefabInstance:
       propertyPath: m_AnchorMin.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8266855990549506720, guid: 965489d79d89ecd4eab8c23b2a52acb9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 965489d79d89ecd4eab8c23b2a52acb9, type: 3}
 --- !u!1 &641422265
@@ -1255,7 +1259,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1043433170777103484, guid: b25cccdc6937c4b498ca9a040849c157, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7910907290781273297, guid: b25cccdc6937c4b498ca9a040849c157, type: 3}
       propertyPath: player

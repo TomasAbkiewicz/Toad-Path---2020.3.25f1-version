@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 3781145792434793983}
   - component: {fileID: 276566232214725210}
   - component: {fileID: 2608279952677017232}
-  - component: {fileID: -4193788519921500811}
   - component: {fileID: 6948351813263794296}
   - component: {fileID: 5411690017305917698}
+  - component: {fileID: -4193788519921500811}
   - component: {fileID: 8457174767079726836}
   m_Layer: 0
   m_Name: Enemigo robot terminado
@@ -92,37 +92,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &-4193788519921500811
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4553848116225881925}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b4b9d64063173cf46ba930b801362306, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  agent: {fileID: 6948351813263794296}
-  player: {fileID: 0}
-  whatIsGround:
-    serializedVersion: 2
-    m_Bits: 2048
-  whatIsPlayer:
-    serializedVersion: 2
-    m_Bits: 8192
-  walkPoint: {x: 0, y: 0, z: 0}
-  walkPointRange: 5
-  timeBetweenAttacks: 1
-  damage: 10
-  attackRadius: 2
-  attackPoint: {fileID: 3728925081023578564}
-  sightRange: 10
-  attackRange: 2
-  playerInSightRange: 0
-  playerInAttackRange: 0
-  anim: {fileID: 8457174767079726836}
 --- !u!195 &6948351813263794296
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -159,6 +128,37 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -5495902117074765545, guid: a2fb858e87a76e740bb9ae0a2b4aa795, type: 3}
+--- !u!114 &-4193788519921500811
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4553848116225881925}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4b9d64063173cf46ba930b801362306, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agent: {fileID: 6948351813263794296}
+  player: {fileID: 0}
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 2048
+  whatIsPlayer:
+    serializedVersion: 2
+    m_Bits: 8192
+  walkPoint: {x: 0, y: 0, z: 0}
+  walkPointRange: 5
+  timeBetweenAttacks: 1
+  damage: 10
+  attackRadius: 2
+  attackPoint: {fileID: 3728925081023578564}
+  sightRange: 10
+  attackRange: 2
+  playerInSightRange: 0
+  playerInAttackRange: 0
+  anim: {fileID: 8457174767079726836}
 --- !u!95 &8457174767079726836
 Animator:
   serializedVersion: 3
