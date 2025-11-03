@@ -23131,6 +23131,10 @@ PrefabInstance:
       propertyPath: camHolder
       value: 
       objectReference: {fileID: 1400484299}
+    - target: {fileID: 5996930178976274049, guid: 24d1aa3e1e4272e4a9931b8f2b4b9e3e, type: 3}
+      propertyPath: useFluentFov
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5996930178976274053, guid: 24d1aa3e1e4272e4a9931b8f2b4b9e3e, type: 3}
       propertyPath: visualHealth
       value: 
