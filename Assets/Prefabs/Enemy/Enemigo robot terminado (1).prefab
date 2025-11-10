@@ -289,7 +289,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.41963816, g: 0.8490566, b: 0.06007475, a: 1}
+  m_Color: {r: 1, g: 0.016675694, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -529,10 +529,10 @@ GameObject:
   - component: {fileID: 5192741674996049379}
   - component: {fileID: 8067253442052182313}
   - component: {fileID: 3146711733746329537}
-  - component: {fileID: 62192683984928443}
   - component: {fileID: 1011751911779531468}
   - component: {fileID: 4511260113250048333}
   - component: {fileID: 316135606127318085}
+  - component: {fileID: 3409281411071703708}
   m_Layer: 0
   m_Name: Enemigo robot terminado (1)
   m_TagString: whatIsEnemy
@@ -620,7 +620,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 8427457780264136956}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 1.562978
+  m_Radius: 1.2
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
@@ -630,23 +630,9 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 2
-  m_BaseOffset: 0
+  m_BaseOffset: -0.3
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!64 &62192683984928443
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8427457780264136956}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -5495902117074765545, guid: a2fb858e87a76e740bb9ae0a2b4aa795, type: 3}
 --- !u!114 &1011751911779531468
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -711,3 +697,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyHealth: 150
   enemyHealthBar: {fileID: 5460294105600916321}
+--- !u!65 &3409281411071703708
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8427457780264136956}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.125956, y: 2.435309, z: 2.1373034}
+  m_Center: {x: 0, y: 1.1371477, z: 0.62391615}
