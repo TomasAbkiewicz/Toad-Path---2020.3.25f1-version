@@ -292,25 +292,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 212391513}
   m_CullTransparentMesh: 1
---- !u!1 &258834822 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1043433170777103484, guid: b25cccdc6937c4b498ca9a040849c157, type: 3}
-  m_PrefabInstance: {fileID: 926406747}
-  m_PrefabAsset: {fileID: 0}
---- !u!64 &258834827
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 258834822}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
 --- !u!43 &275333422
 Mesh:
   m_ObjectHideFlags: 0
@@ -819,76 +800,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -3165985885265623073, guid: 0affb8da1c8ee24499b17293db8511c9, type: 3}
---- !u!1001 &926406747
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 374032262178997958, guid: b25cccdc6937c4b498ca9a040849c157, type: 3}
-      propertyPath: m_RootOrder
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 374032262178997958, guid: b25cccdc6937c4b498ca9a040849c157, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -2.32
-      objectReference: {fileID: 0}
-    - target: {fileID: 374032262178997958, guid: b25cccdc6937c4b498ca9a040849c157, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.17
-      objectReference: {fileID: 0}
-    - target: {fileID: 374032262178997958, guid: b25cccdc6937c4b498ca9a040849c157, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -17.215767
-      objectReference: {fileID: 0}
-    - target: {fileID: 374032262178997958, guid: b25cccdc6937c4b498ca9a040849c157, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 374032262178997958, guid: b25cccdc6937c4b498ca9a040849c157, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 374032262178997958, guid: b25cccdc6937c4b498ca9a040849c157, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 374032262178997958, guid: b25cccdc6937c4b498ca9a040849c157, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 374032262178997958, guid: b25cccdc6937c4b498ca9a040849c157, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 374032262178997958, guid: b25cccdc6937c4b498ca9a040849c157, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 374032262178997958, guid: b25cccdc6937c4b498ca9a040849c157, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1043433170777103484, guid: b25cccdc6937c4b498ca9a040849c157, type: 3}
-      propertyPath: m_Name
-      value: "Robot Ara\xF1a sin animaci\xF3n Variant"
-      objectReference: {fileID: 0}
-    - target: {fileID: 1043433170777103484, guid: b25cccdc6937c4b498ca9a040849c157, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7910907290781273297, guid: b25cccdc6937c4b498ca9a040849c157, type: 3}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 1623225822}
-    - target: {fileID: 7910907290781273297, guid: b25cccdc6937c4b498ca9a040849c157, type: 3}
-      propertyPath: projectile
-      value: 
-      objectReference: {fileID: 1175188909}
-    m_RemovedComponents:
-    - {fileID: 5806834664120776117, guid: b25cccdc6937c4b498ca9a040849c157, type: 3}
-  m_SourcePrefab: {fileID: 100100000, guid: b25cccdc6937c4b498ca9a040849c157, type: 3}
 --- !u!20 &963194227 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 8538552181348436473, guid: 579a20c1d07c7b5458023c551a44fda7, type: 3}
@@ -2564,6 +2475,95 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 32a5a5844521f004c97391567fa36c95, type: 3}
+--- !u!1001 &5805578482713321478
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 751081815452134037, guid: 94c56f1db9d1169448d60b7b2927f35e, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1120336280934121585, guid: 94c56f1db9d1169448d60b7b2927f35e, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1120336280934121585, guid: 94c56f1db9d1169448d60b7b2927f35e, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1155218058272568944, guid: 94c56f1db9d1169448d60b7b2927f35e, type: 3}
+      propertyPath: enemyHealth
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 6170312481136164507, guid: 94c56f1db9d1169448d60b7b2927f35e, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6170312481136164507, guid: 94c56f1db9d1169448d60b7b2927f35e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.32
+      objectReference: {fileID: 0}
+    - target: {fileID: 6170312481136164507, guid: 94c56f1db9d1169448d60b7b2927f35e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.17
+      objectReference: {fileID: 0}
+    - target: {fileID: 6170312481136164507, guid: 94c56f1db9d1169448d60b7b2927f35e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -17.215767
+      objectReference: {fileID: 0}
+    - target: {fileID: 6170312481136164507, guid: 94c56f1db9d1169448d60b7b2927f35e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6170312481136164507, guid: 94c56f1db9d1169448d60b7b2927f35e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6170312481136164507, guid: 94c56f1db9d1169448d60b7b2927f35e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6170312481136164507, guid: 94c56f1db9d1169448d60b7b2927f35e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6170312481136164507, guid: 94c56f1db9d1169448d60b7b2927f35e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6170312481136164507, guid: 94c56f1db9d1169448d60b7b2927f35e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6170312481136164507, guid: 94c56f1db9d1169448d60b7b2927f35e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6839430914791433249, guid: 94c56f1db9d1169448d60b7b2927f35e, type: 3}
+      propertyPath: m_Name
+      value: "Robot Ara\xF1a sin animaci\xF3n Variant"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6839430914791433249, guid: 94c56f1db9d1169448d60b7b2927f35e, type: 3}
+      propertyPath: m_TagString
+      value: whatIsEnemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 7670200588070842024, guid: 94c56f1db9d1169448d60b7b2927f35e, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 963194227}
+    - target: {fileID: 7910907290430411914, guid: 94c56f1db9d1169448d60b7b2927f35e, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1623225822}
+    - target: {fileID: 7910907290430411914, guid: 94c56f1db9d1169448d60b7b2927f35e, type: 3}
+      propertyPath: projectile
+      value: 
+      objectReference: {fileID: 1175188909}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 94c56f1db9d1169448d60b7b2927f35e, type: 3}
 --- !u!1001 &6925220716440615496
 PrefabInstance:
   m_ObjectHideFlags: 0
