@@ -9,6 +9,12 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 61d0d544760461c4bbee2824493a4be0
   - enabled: 1
-    path: Assets/Scenes/Toad Path Demo.unity
-    guid: d89f9bdcb05883c42990a645eab1dd98
+    path: Assets/Scenes/pruebaterrain.unity
+    guid: 7cdf7d1bec8d2314ab44bec557b5db22
+  - enabled: 1
+    path: Assets/Scenes/Level 2.unity
+    guid: 6d5f31b55df5757409bc369389c1c486
+  - enabled: 1
+    path: Assets/Scenes/Level3.unity
+    guid: 48511de4a0279e94a8d5981676b5a19d
   m_configObjects: {}
