@@ -1,118 +1,82 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class UpgradeManager : MonoBehaviour
 {
-    [Header("Panel de mejoras")]
-    public GameObject congratsPanel;
+    [Header("Panel")]
+    public GameObject upgradePanel;
 
-    [Header("Player Stats")]
-    public DataPlayer playerHealth;
-    public SwordDamage playerDamage;
-    public PlayerMovementDashing movement;
+    [Header("Stats")]
+    public PlayerHealth playerHealth;
+    public PlayerDamage playerDamage;
+    public PlayerMovementDashing playerMovement;
 
     [Header("Config")]
     public float upgradePercent = 0.15f;
-    public string nextSceneName = "NextLevel";
+    public string nextSceneName = "LVL_2";
 
+    bool isChoosing = false;
 
-    private void Start()
+    void Update()
     {
-        LoadUpgrades();
+        if (!isChoosing) return;
+
+        if (Input.GetKeyDown(KeyCode.Alpha1)) ChooseHealth();
+        if (Input.GetKeyDown(KeyCode.Alpha2)) ChooseDamage();
+        if (Input.GetKeyDown(KeyCode.Alpha3)) ChooseSpeed();
     }
 
-
-    public void ShowCongratsPanel()
+    public void ShowUpgrades()
     {
-        congratsPanel.SetActive(true);
+        upgradePanel.SetActive(true);
+        isChoosing = true;
 
-        Cursor.visible = true;
+        // 🔓 Liberar cursor
         Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
 
-        PlayerCam cam = FindObjectOfType<PlayerCam>();
-        if (cam != null)
-            cam.enabled = false;
-        Debug.Log("DESBLOQUEANDO CURSOR");
-        Debug.Log("Cursor.lockState = " + Cursor.lockState);
-        Debug.Log("Cursor.visible = " + Cursor.visible);
+        // Pausar movimiento
+        playerMovement.canMove = false;
     }
 
-
-    // ====================================================
-    //   OPCIONES DE MEJORA
-    // ====================================================
-    public void UpgradeHealth()
+    void CloseUpgrades()
     {
-        playerHealth.healthPlayer = Mathf.RoundToInt(playerHealth.healthPlayer * (1f + upgradePercent));
-        SaveUpgrades();
-        RestoreCamera();
-        LoadNextScene();
-    }
+        upgradePanel.SetActive(false);
+        isChoosing = false;
 
-    public void UpgradeDamage()
-    {
-        playerDamage.damage = Mathf.RoundToInt(playerDamage.damage * (1f + upgradePercent));
-        SaveUpgrades();
-        RestoreCamera();
-        LoadNextScene();
-    }
+        // 🔒 Volver a bloquear cursor
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
 
-    public void UpgradeSpeed()
-    {
-        movement.walkSpeed *= (1f + upgradePercent);
-        movement.sprintSpeed *= (1f + upgradePercent);
-        SaveUpgrades();
-        RestoreCamera();
-        LoadNextScene();
-    }
+        // Restaurar movimiento
+        playerMovement.canMove = true;
 
-
-    // ====================================================
-    // GUARDAR Y CARGAR
-    // ====================================================
-    void SaveUpgrades()
-    {
-        PlayerPrefs.SetInt("PlayerHealth", playerHealth.healthPlayer);
-        PlayerPrefs.SetInt("PlayerDamage", playerDamage.damage);
-        PlayerPrefs.SetFloat("WalkSpeed", movement.walkSpeed);
-        PlayerPrefs.SetFloat("SprintSpeed", movement.sprintSpeed);
-        PlayerPrefs.Save();
-    }
-
-    void LoadUpgrades()
-    {
-        if (PlayerPrefs.HasKey("PlayerHealth"))
-            playerHealth.healthPlayer = PlayerPrefs.GetInt("PlayerHealth");
-
-        if (PlayerPrefs.HasKey("PlayerDamage"))
-            playerDamage.damage = PlayerPrefs.GetInt("PlayerDamage");
-
-        if (PlayerPrefs.HasKey("WalkSpeed"))
-            movement.walkSpeed = PlayerPrefs.GetFloat("WalkSpeed");
-
-        if (PlayerPrefs.HasKey("SprintSpeed"))
-            movement.sprintSpeed = PlayerPrefs.GetFloat("SprintSpeed");
-    }
-
-
-    // ====================================================
-    // RESTAURAR C�MARA
-    // ====================================================
-    void RestoreCamera()
-    {
-        PlayerCam cam = FindObjectOfType<PlayerCam>();
-        if (cam != null)
-        {
-            cam.enabled = true;
-        }
-    }
-
-
-    // ====================================================
-    // CAMBIAR DE ESCENA
-    // ====================================================
-    void LoadNextScene()
-    {
+        // Cargar siguiente nivel
         SceneManager.LoadScene(nextSceneName);
+    }
+
+    // ------------------------------
+    //   OPCIONES DE UPGRADE
+    // ------------------------------
+
+    void ChooseHealth()
+    {
+        playerHealth.maxHealth += playerHealth.maxHealth * upgradePercent;
+        playerHealth.currentHealth = playerHealth.maxHealth;
+        CloseUpgrades();
+    }
+
+    void ChooseDamage()
+    {
+        playerDamage.damage += playerDamage.damage * upgradePercent;
+        CloseUpgrades();
+    }
+
+    void ChooseSpeed()
+    {
+        playerMovement.moveSpeed += playerMovement.moveSpeed * upgradePercent;
+        CloseUpgrades();
     }
 }
