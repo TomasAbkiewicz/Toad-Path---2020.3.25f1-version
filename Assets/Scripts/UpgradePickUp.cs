@@ -19,7 +19,9 @@ public class UpgradePickUp : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (used) return;
-        if (!other.CompareTag("Player")) return;
+
+        // ⭐⭐ Cambio importante acá ⭐⭐
+        if (!other.CompareTag("whatIsPlayer")) return;
 
         var stats = PlayerStatsPersistent.instance;
         if (stats == null)
@@ -28,28 +30,23 @@ public class UpgradePickUp : MonoBehaviour
             return;
         }
 
-        // Aplicar la mejora
         switch (type)
         {
             case UpgradeType.MoreDamage:
                 stats.UpgradeDamagePercent(percent);
-                Debug.Log("Applied damage upgrade: " + (percent * 100f) + "%");
                 break;
 
             case UpgradeType.MoreHealth:
                 stats.UpgradeHealthPercent(percent);
-                Debug.Log("Applied health upgrade: " + (percent * 100f) + "%");
                 break;
 
             case UpgradeType.MoreMoveSpeed:
                 stats.UpgradeMoveSpeedPercent(percent);
-                Debug.Log("Applied move speed upgrade: " + (percent * 100f) + "%");
                 break;
         }
 
         used = true;
 
-        // Opcional: cargar la siguiente escena
         if (!string.IsNullOrEmpty(nextSceneName))
         {
             SceneManager.LoadScene(nextSceneName);

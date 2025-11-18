@@ -1,16 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;   // ‚Üê IMPORTANTE para HashSet
 
 public class SwordDamage : MonoBehaviour
 {
     public int damage;
     private bool isAttacking = false;
-    public GameObject Enemy;
+    private HashSet<EnemyHealth> enemiesHit = new HashSet<EnemyHealth>();
 
     void Update()
     {
-        // Si el jugador hace click, activa el modo ataque por un corto tiempo
         if (Input.GetMouseButtonDown(0))
         {
             StartCoroutine(AttackWindow());
@@ -20,22 +19,20 @@ public class SwordDamage : MonoBehaviour
     private IEnumerator AttackWindow()
     {
         isAttacking = true;
-        yield return new WaitForSeconds(0.3f); // ventana de tiempo donde la espada puede daÒar
+        enemiesHit.Clear(); // Evita golpear a un mismo enemigo varias veces por ataque
+        yield return new WaitForSeconds(0.3f);
         isAttacking = false;
     }
 
-    private void OnTriggerEnter(Collider other)
+    void OnTriggerEnter(Collider other)
     {
-        if (isAttacking && other.CompareTag("whatIsEnemy"))
+        if (!isAttacking) return;
+
+        EnemyHealth health = other.GetComponent<EnemyHealth>();
+        if (health != null && !enemiesHit.Contains(health))
         {
-            DataEnemy enemy = other.GetComponent<DataEnemy>();
-            if (enemy != null)
-            {
-                enemy.enemyHealth -= damage;
-                Debug.Log("Enemy Hit");
-            }
+            health.TakeDamage(damage);
+            enemiesHit.Add(health);
         }
     }
-
-
 }

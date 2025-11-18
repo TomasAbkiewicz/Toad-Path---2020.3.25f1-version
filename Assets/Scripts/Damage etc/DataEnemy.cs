@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,10 +12,14 @@ public class DataEnemy : MonoBehaviour
 
         if (enemyHealth <= 0)
         {
-            Debug.Log("ENEMY DEFEATED");
-            Destroy(gameObject);
+            Die();
         }
-
     }
 
+    void Die()
+    {
+        Collider col = GetComponent<Collider>();
+        EnemyChecker.Instance.NotifyEnemyDied(transform.position, col);
+        Destroy(gameObject);
+    }
 }

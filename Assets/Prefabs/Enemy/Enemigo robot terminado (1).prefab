@@ -531,8 +531,8 @@ GameObject:
   - component: {fileID: 3146711733746329537}
   - component: {fileID: 1011751911779531468}
   - component: {fileID: 4511260113250048333}
-  - component: {fileID: 316135606127318085}
   - component: {fileID: 3409281411071703708}
+  - component: {fileID: 827060531033252125}
   m_Layer: 0
   m_Name: Enemigo robot terminado (1)
   m_TagString: whatIsEnemy
@@ -683,20 +683,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &316135606127318085
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8427457780264136956}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d98c0eb16f081a4b9cef19be33586c3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyHealth: 150
-  enemyHealthBar: {fileID: 5460294105600916321}
 --- !u!65 &3409281411071703708
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -710,3 +696,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3.125956, y: 2.435309, z: 2.1373034}
   m_Center: {x: 0, y: 1.1371477, z: 0.62391615}
+--- !u!114 &827060531033252125
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8427457780264136956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d48c0841df76594fa57861f9ede213d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 150
+  currentHealth: 0
+  healthSlider: {fileID: 5460294105600916321}

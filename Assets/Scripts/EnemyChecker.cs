@@ -2,36 +2,49 @@ using UnityEngine;
 
 public class EnemyChecker : MonoBehaviour
 {
-    public string enemyTag = "whatIsEnemy";
-    [Header("Prefabs de upgrades (3)")]
-    public GameObject[] upgradePrefabs; // asigná exactamente 3
-    [Header("Spawn points (3 Transforms)")]
-    public Transform[] spawnPoints;
+    public static EnemyChecker Instance;
 
-    private bool spawned = false;
+    public GameObject upgradePrefab1;
+    public GameObject upgradePrefab2;
+    public GameObject upgradePrefab3;
 
-    void Update()
+    public int enemiesRemaining;
+    private bool upgradesSpawned = false;
+
+    private void Awake()
     {
-        if (spawned) return;
+        Instance = this;
+    }
 
-        if (GameObject.FindGameObjectsWithTag(enemyTag).Length == 0)
+    public void NotifyEnemyDied(Vector3 enemyPos, Collider enemyCollider)
+    {
+        enemiesRemaining--;
+
+        if (enemiesRemaining <= 0 && !upgradesSpawned)
         {
-            spawned = true;
-            SpawnUpgrades();
+            upgradesSpawned = true;
+
+            // Siempre va a funcionar:
+            // Toma la posición real del enemigo
+            Vector3 spawnPos = enemyPos;
+
+            // Le sumamos la altura del collider para que aparezca exactamente arriba
+            float height = enemyCollider.bounds.size.y;
+
+            spawnPos.y += height * 0.8f; // Ajustable. 1f = exacto arriba
+
+            SpawnUpgradesAtPosition(spawnPos);
         }
     }
 
-    void SpawnUpgrades()
+    private void SpawnUpgradesAtPosition(Vector3 pos)
     {
-        if (upgradePrefabs.Length < 3 || spawnPoints.Length < 3)
-        {
-            Debug.LogWarning("Asigná 3 prefabs y 3 spawnPoints en EnemyChecker.");
-            return;
-        }
+        float spread = 2f;
 
-        for (int i = 0; i < 3; i++)
-        {
-            Instantiate(upgradePrefabs[i], spawnPoints[i].position, Quaternion.identity);
-        }
+        Instantiate(upgradePrefab1, pos + new Vector3(-spread, 0, 0), Quaternion.identity);
+        Instantiate(upgradePrefab2, pos, Quaternion.identity);
+        Instantiate(upgradePrefab3, pos + new Vector3(spread, 0, 0), Quaternion.identity);
+
+        Debug.Log("Upgrades spawn en posición corregida.");
     }
 }
