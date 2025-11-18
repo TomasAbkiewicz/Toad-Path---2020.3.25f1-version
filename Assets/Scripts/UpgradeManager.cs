@@ -1,82 +1,36 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class UpgradeManager : MonoBehaviour
 {
-    [Header("Panel")]
-    public GameObject upgradePanel;
+    public enum UpgradeType { MoreDamage, MoreHealth, MoreSpeed }
+    public UpgradeType type;
 
-    [Header("Stats")]
-    public PlayerHealth playerHealth;
-    public PlayerDamage playerDamage;
-    public PlayerMovementDashing playerMovement;
-
-    [Header("Config")]
-    public float upgradePercent = 0.15f;
-    public string nextSceneName = "LVL_2";
-
-    bool isChoosing = false;
-
-    void Update()
+    public void ApplyUpgrade()
     {
-        if (!isChoosing) return;
+        PlayerStatsPersistent stats = PlayerStatsPersistent.instance;
 
-        if (Input.GetKeyDown(KeyCode.Alpha1)) ChooseHealth();
-        if (Input.GetKeyDown(KeyCode.Alpha2)) ChooseDamage();
-        if (Input.GetKeyDown(KeyCode.Alpha3)) ChooseSpeed();
+        switch (type)
+        {
+            case UpgradeType.MoreDamage:
+                stats.currentDamage = Mathf.RoundToInt(stats.currentDamage * 1.10f);
+                break;
+
+            case UpgradeType.MoreHealth:
+                stats.currentHealth = Mathf.RoundToInt(stats.currentHealth * 1.20f);
+                break;
+
+            case UpgradeType.MoreSpeed:
+                stats.currentMoveSpeed *= 1.15f;
+                break;
+        }
     }
 
-    public void ShowUpgrades()
+    void OnTriggerEnter(Collider other)
     {
-        upgradePanel.SetActive(true);
-        isChoosing = true;
+        if (!other.CompareTag("Player")) return;
 
-        // 🔓 Liberar cursor
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
-
-        // Pausar movimiento
-        playerMovement.canMove = false;
-    }
-
-    void CloseUpgrades()
-    {
-        upgradePanel.SetActive(false);
-        isChoosing = false;
-
-        // 🔒 Volver a bloquear cursor
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-
-        // Restaurar movimiento
-        playerMovement.canMove = true;
-
-        // Cargar siguiente nivel
-        SceneManager.LoadScene(nextSceneName);
-    }
-
-    // ------------------------------
-    //   OPCIONES DE UPGRADE
-    // ------------------------------
-
-    void ChooseHealth()
-    {
-        playerHealth.maxHealth += playerHealth.maxHealth * upgradePercent;
-        playerHealth.currentHealth = playerHealth.maxHealth;
-        CloseUpgrades();
-    }
-
-    void ChooseDamage()
-    {
-        playerDamage.damage += playerDamage.damage * upgradePercent;
-        CloseUpgrades();
-    }
-
-    void ChooseSpeed()
-    {
-        playerMovement.moveSpeed += playerMovement.moveSpeed * upgradePercent;
-        CloseUpgrades();
+        ApplyUpgrade();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }

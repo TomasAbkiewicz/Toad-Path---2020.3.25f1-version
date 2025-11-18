@@ -2,31 +2,36 @@ using UnityEngine;
 
 public class EnemyChecker : MonoBehaviour
 {
+    public string enemyTag = "whatIsEnemy";
+    [Header("Prefabs de upgrades (3)")]
+    public GameObject[] upgradePrefabs; // asigná exactamente 3
+    [Header("Spawn points (3 Transforms)")]
+    public Transform[] spawnPoints;
 
-    public string enemyTag = "whatIsEnemy";   
-    public GameObject congratsPanel;          
-
-    private bool panelShown = false;
-
-    void Start()
-    {
-        if (congratsPanel != null)
-            congratsPanel.SetActive(false);
-    }
+    private bool spawned = false;
 
     void Update()
     {
-        if (panelShown) return;
+        if (spawned) return;
 
-
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag(enemyTag);
-
-        if (enemies.Length == 0)
+        if (GameObject.FindGameObjectsWithTag(enemyTag).Length == 0)
         {
-            panelShown = true;
+            spawned = true;
+            SpawnUpgrades();
+        }
+    }
 
-            if (congratsPanel != null)
-                congratsPanel.SetActive(true);
+    void SpawnUpgrades()
+    {
+        if (upgradePrefabs.Length < 3 || spawnPoints.Length < 3)
+        {
+            Debug.LogWarning("Asigná 3 prefabs y 3 spawnPoints en EnemyChecker.");
+            return;
+        }
+
+        for (int i = 0; i < 3; i++)
+        {
+            Instantiate(upgradePrefabs[i], spawnPoints[i].position, Quaternion.identity);
         }
     }
 }
