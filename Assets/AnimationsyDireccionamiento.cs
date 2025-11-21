@@ -104,7 +104,7 @@ public class AnimationsyDireccionamiento : MonoBehaviour
 
     private void AttackPlayer()
     {
-        agent.SetDestination(transform.position);
+        agent.ResetPath();
         transform.LookAt(player);
 
 
