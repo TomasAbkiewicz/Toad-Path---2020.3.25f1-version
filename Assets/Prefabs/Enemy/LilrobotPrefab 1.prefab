@@ -1,0 +1,147 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6931812321451846037
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6931812321451846034}
+  m_Layer: 0
+  m_Name: LilrobotPrefab 1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6931812321451846034
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6931812321451846037}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 35.57813, y: -0.78, z: 27.744074}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 7621980630153671830}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1556901226082027277
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 6931812321451846034}
+    m_Modifications:
+    - target: {fileID: 2201935513500919191, guid: 3907a8a59c408824788bace019bd6f13, type: 3}
+      propertyPath: enemyHealthBar
+      value: 
+      objectReference: {fileID: 7741987869057439879}
+    - target: {fileID: 6486471594407129940, guid: 3907a8a59c408824788bace019bd6f13, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7037263702782122853, guid: 3907a8a59c408824788bace019bd6f13, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7037263702782122853, guid: 3907a8a59c408824788bace019bd6f13, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7133720660206401787, guid: 3907a8a59c408824788bace019bd6f13, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7604339467261574774, guid: 3907a8a59c408824788bace019bd6f13, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7604339467261574774, guid: 3907a8a59c408824788bace019bd6f13, type: 3}
+      propertyPath: projectile
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7604339467261574774, guid: 3907a8a59c408824788bace019bd6f13, type: 3}
+      propertyPath: sightRange
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 7604339467261574774, guid: 3907a8a59c408824788bace019bd6f13, type: 3}
+      propertyPath: attackRange
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8581150344522410273, guid: 3907a8a59c408824788bace019bd6f13, type: 3}
+      propertyPath: m_Name
+      value: Lil Robot
+      objectReference: {fileID: 0}
+    - target: {fileID: 8581150344522410273, guid: 3907a8a59c408824788bace019bd6f13, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8961475422068601755, guid: 3907a8a59c408824788bace019bd6f13, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8961475422068601755, guid: 3907a8a59c408824788bace019bd6f13, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8961475422068601755, guid: 3907a8a59c408824788bace019bd6f13, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8961475422068601755, guid: 3907a8a59c408824788bace019bd6f13, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8961475422068601755, guid: 3907a8a59c408824788bace019bd6f13, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8961475422068601755, guid: 3907a8a59c408824788bace019bd6f13, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8961475422068601755, guid: 3907a8a59c408824788bace019bd6f13, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8961475422068601755, guid: 3907a8a59c408824788bace019bd6f13, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8961475422068601755, guid: 3907a8a59c408824788bace019bd6f13, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8961475422068601755, guid: 3907a8a59c408824788bace019bd6f13, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8961475422068601755, guid: 3907a8a59c408824788bace019bd6f13, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 7062454505401753618, guid: 3907a8a59c408824788bace019bd6f13, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: 3907a8a59c408824788bace019bd6f13, type: 3}
+--- !u!4 &7621980630153671830 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8961475422068601755, guid: 3907a8a59c408824788bace019bd6f13, type: 3}
+  m_PrefabInstance: {fileID: 1556901226082027277}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7741987869057439879 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9145167726752309130, guid: 3907a8a59c408824788bace019bd6f13, type: 3}
+  m_PrefabInstance: {fileID: 1556901226082027277}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
