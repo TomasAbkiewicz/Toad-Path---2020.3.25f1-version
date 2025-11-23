@@ -51,9 +51,7 @@ public class RobotVerdeScript : MonoBehaviour
         if (walkPointSet)
             agent.SetDestination(walkPoint);
 
-        Vector3 distanceToWalkPoint = transform.position - walkPoint;
-
-        if (distanceToWalkPoint.magnitude < 1f)
+        if ((transform.position - walkPoint).magnitude < 1f)
             walkPointSet = false;
     }
 
@@ -76,25 +74,21 @@ public class RobotVerdeScript : MonoBehaviour
 
     private void AttackPlayer()
     {
-        // 🔥 Stop walking animation
         anim.SetBool("isWalking", false);
-
-        // 🔥 Trigger shooting animation
-        anim.SetTrigger("Shot");
-
         agent.SetDestination(transform.position);
         transform.LookAt(player);
 
         if (!alreadyAttacked)
         {
+            // 🔥 Trigger del disparo SOLO una vez por ataque
+            anim.SetTrigger("Shot");
+
             Vector3 spawnPos = shootingPoint != null ? shootingPoint.position : transform.position;
             Quaternion spawnRot = shootingPoint != null ? shootingPoint.rotation : transform.rotation;
-            Vector3 forward = shootingPoint != null ? shootingPoint.forward : transform.forward;
-            Vector3 up = shootingPoint != null ? shootingPoint.up : transform.up;
 
             Rigidbody rb = Instantiate(projectile, spawnPos, spawnRot).GetComponent<Rigidbody>();
-            rb.AddForce(forward * 32f, ForceMode.Impulse);
-            rb.AddForce(up * 8f, ForceMode.Impulse);
+            rb.AddForce(shootingPoint.forward * 32f, ForceMode.Impulse);
+            rb.AddForce(shootingPoint.up * 8f, ForceMode.Impulse);
 
             alreadyAttacked = true;
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
