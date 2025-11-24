@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class AnimationsyDireccionamiento : MonoBehaviour
+public class MeleeDamageAnimations : MonoBehaviour
 {
     public NavMeshAgent agent;
     public Transform player;
@@ -11,7 +11,7 @@ public class AnimationsyDireccionamiento : MonoBehaviour
 
     public Vector3 walkPoint;
     bool walkPointSet;
-    public float walkPointRange;
+    public float walkPointRange = 10f;
 
     public float timeBetweenAttacks = 1f;
     float attackCooldown = 0f;
@@ -20,7 +20,8 @@ public class AnimationsyDireccionamiento : MonoBehaviour
     public float attackRadius = 2f;
     public Transform attackPoint;
 
-    public float sightRange = 10f, attackRange = 2f;
+    public float sightRange = 10f;
+    public float attackRange = 2f;
 
     public Animator anim;
 
@@ -35,7 +36,7 @@ public class AnimationsyDireccionamiento : MonoBehaviour
     {
         float distance = Vector3.Distance(transform.position, player.position);
 
-        // Reducimos cooldown
+        // Reducir cooldown del ataque
         if (attackCooldown > 0)
             attackCooldown -= Time.deltaTime;
 
@@ -62,6 +63,7 @@ public class AnimationsyDireccionamiento : MonoBehaviour
         if (walkPointSet)
             agent.SetDestination(walkPoint);
 
+        // Llegó al punto
         Vector3 distanceToWalkPoint = transform.position - walkPoint;
 
         if (distanceToWalkPoint.magnitude < 1f)
@@ -89,22 +91,20 @@ public class AnimationsyDireccionamiento : MonoBehaviour
 
     private void AttackPlayer()
     {
+        anim.SetBool("isWalking", false);
+
         agent.ResetPath();
         transform.LookAt(player);
 
-        anim.SetBool("isWalking", false);
-
-        // Solo atacamos si cooldown terminó
+        // Solo atacar si cooldown terminó
         if (attackCooldown <= 0f)
         {
             anim.SetTrigger("Attack");
-
-            // Reiniciamos cooldown
             attackCooldown = timeBetweenAttacks;
         }
     }
 
-    // LLAMADO DESDE LA ANIMACIÓN
+    // LLAMADA DESDE LA ANIMACIÓN EXACTAMENTE EN EL FRAME DEL GOLPE
     public void DealDamage()
     {
         Collider[] hitPlayers = Physics.OverlapSphere(attackPoint.position, attackRadius, whatIsPlayer);
@@ -117,11 +117,24 @@ public class AnimationsyDireccionamiento : MonoBehaviour
                 if (playerData != null)
                 {
                     playerData.healthPlayer -= damage;
-                    Debug.Log("Golpeaste al jugador");
+                    Debug.Log("Golpeaste al jugador! daño: " + damage);
                 }
             }
         }
     }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, attackRange);
+
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, sightRange);
+
+        if (attackPoint != null)
+        {
+            Gizmos.color = Color.magenta;
+            Gizmos.DrawWireSphere(attackPoint.position, attackRadius);
+        }
+    }
 }
-
-
