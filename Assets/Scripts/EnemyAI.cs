@@ -1,114 +1,149 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class EnemyAI : MonoBehaviour
 {
+    [Header("References")]
     public NavMeshAgent agent;
-
     public Transform player;
-
-    public LayerMask whatIsGround, whatIsPlayer;
-
+    public Animator anim;
     public Transform shootingPoint;
 
-    public Vector3 walkPoint;
+    [Header("Ranges")]
+    public float sightRange = 15f;
+    public float attackRange = 10f;
+    public LayerMask whatIsGround, whatIsPlayer;
+
+    [Header("Patrol")]
+    private Vector3 walkPoint;
     bool walkPointSet;
-    public float walkPointRange;
+    public float walkPointRange = 10f;
 
-
-    public float timeBetweenAttacks;
+    [Header("Attack")]
+    public GameObject projectilePrefab;
+    public float timeBetweenAttacks = 2f;
     bool alreadyAttacked;
-    public GameObject projectile;
 
+    [Header("Projectile Settings")]
+    public float projectileSpeed = 15f;
 
-    public float sightRange, attackRange;
-    public bool playerInSightRange, playerInAttackRange;
+    bool playerInSightRange;
+    bool playerInAttackRange;
 
     private void Awake()
     {
         player = GameObject.Find("PlayerObj").transform;
         agent = GetComponent<NavMeshAgent>();
+        anim = GetComponent<Animator>();
     }
 
     private void Update()
     {
+        // Mantener al enemigo recto en todo momento
+        Vector3 uprightEuler = transform.eulerAngles;
+        uprightEuler.x = 0f;
+        uprightEuler.z = 0f;
+        transform.eulerAngles = uprightEuler;
 
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
 
-        if (!playerInSightRange && !playerInAttackRange) Patroling();
-        if (playerInSightRange && !playerInAttackRange) ChasePlayer();
-        if (playerInAttackRange && playerInSightRange) AttackPlayer();
+        if (!playerInSightRange && !playerInAttackRange) Patrol();
+        else if (playerInSightRange && !playerInAttackRange) Chase();
+        else if (playerInSightRange && playerInAttackRange) Attack();
     }
 
-    private void Patroling()
+    private void Patrol()
     {
+        anim.SetBool("isWalking", true);
+
         if (!walkPointSet) SearchWalkPoint();
+        agent.SetDestination(walkPoint);
 
-        if (walkPointSet)
-            agent.SetDestination(walkPoint);
-
-        Vector3 distanceToWalkPoint = transform.position - walkPoint;
-
-        //Walkpoint reached
-        if (distanceToWalkPoint.magnitude < 1f)
+        if (Vector3.Distance(transform.position, walkPoint) < 1f)
             walkPointSet = false;
     }
+
     private void SearchWalkPoint()
     {
-        //Calculate random point in range
-        float randomZ = Random.Range(-walkPointRange, walkPointRange);
-        float randomX = Random.Range(-walkPointRange, walkPointRange);
+        float rx = Random.Range(-walkPointRange, walkPointRange);
+        float rz = Random.Range(-walkPointRange, walkPointRange);
 
-        walkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
+        walkPoint = new Vector3(transform.position.x + rx, transform.position.y, transform.position.z + rz);
 
         if (Physics.Raycast(walkPoint, -transform.up, 2f, whatIsGround))
             walkPointSet = true;
     }
 
-    private void ChasePlayer()
+    private void Chase()
     {
+        anim.SetBool("isWalking", true);
         agent.SetDestination(player.position);
+
+        RotateTowardsPlayer();
     }
 
-    private void AttackPlayer()
+    private void Attack()
     {
-
+        anim.SetBool("isWalking", false);
         agent.SetDestination(transform.position);
 
-        transform.LookAt(player);
+        RotateTowardsPlayer();
 
         if (!alreadyAttacked)
         {
-            // usa shootingPoint si está asignado, sino usa la posición/rotación del enemigo
-            Vector3 spawnPos = shootingPoint != null ? shootingPoint.position : transform.position;
-            Quaternion spawnRot = shootingPoint != null ? shootingPoint.rotation : transform.rotation;
-            Vector3 forward = shootingPoint != null ? shootingPoint.forward : transform.forward;
-            Vector3 up = shootingPoint != null ? shootingPoint.up : transform.up;
-
-            Rigidbody rb = Instantiate(projectile, spawnPos, spawnRot).GetComponent<Rigidbody>();
-            rb.AddForce(forward * 32f, ForceMode.Impulse);
-            rb.AddForce(up * 8f, ForceMode.Impulse);
+            anim.SetTrigger("Shot");
+            Invoke(nameof(ShootProjectile), 0.15f);
 
             alreadyAttacked = true;
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
         }
     }
+
+    private void RotateTowardsPlayer()
+    {
+        Vector3 dir = player.position - transform.position;
+        dir.y = 0; // Bloquea inclinación
+
+        if (dir != Vector3.zero)
+        {
+            Quaternion lookRot = Quaternion.LookRotation(dir);
+            transform.rotation = Quaternion.Slerp(transform.rotation, lookRot, Time.deltaTime * 10f);
+        }
+    }
+
+    private void ShootProjectile()
+    {
+        GameObject proj = Instantiate(projectilePrefab, shootingPoint.position, Quaternion.identity);
+        Rigidbody rb = proj.GetComponent<Rigidbody>();
+
+        Vector3 target = player.position;
+        Vector3 dir = target - shootingPoint.position;
+
+        Vector3 dirXZ = new Vector3(dir.x, 0f, dir.z);
+        Vector3 forward = dirXZ.normalized;
+
+        float distance = dirXZ.magnitude;
+
+        float autoUpward = Mathf.Clamp(distance / 6f, 1.2f, 6f);
+
+        Vector3 force =
+            forward * projectileSpeed +
+            Vector3.up * autoUpward;
+
+        rb.AddForce(force, ForceMode.Impulse);
+    }
+
     private void ResetAttack()
     {
         alreadyAttacked = false;
     }
 
-
-
     private void OnDrawGizmosSelected()
     {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, attackRange);
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, sightRange);
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, attackRange);
     }
-
 }

@@ -204,7 +204,7 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &1442289073083946535
+--- !u!114 &2745129085288539754
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -213,24 +213,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 1784942317215784023}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e6b2037c8d650f4c8a7b9235f669fc9, type: 3}
+  m_Script: {fileID: 11500000, guid: f0fcd8b3b86fd0b4cb4d38b0d6b884b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agent: {fileID: 0}
+  agent: {fileID: 1442289073083946534}
   player: {fileID: 0}
+  anim: {fileID: 5003112074263927959}
+  shootingPoint: {fileID: 1442289072900436347}
+  sightRange: 15
+  attackRange: 10
   whatIsGround:
     serializedVersion: 2
     m_Bits: 2048
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 8192
-  shootingPoint: {fileID: 1442289072900436347}
-  walkPoint: {x: 0, y: 0, z: 0}
   walkPointRange: 0
+  projectilePrefab: {fileID: 0}
   timeBetweenAttacks: 2
-  projectile: {fileID: 0}
-  sightRange: 70
-  attackRange: 20
-  playerInSightRange: 0
-  playerInAttackRange: 0
-  anim: {fileID: 5003112074263927959}
+  projectileSpeed: 15

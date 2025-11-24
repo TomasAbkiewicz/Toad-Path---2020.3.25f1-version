@@ -1,29 +1,34 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class RobotVerdeScript : MonoBehaviour
 {
+    [Header("References")]
     public NavMeshAgent agent;
     public Transform player;
-    public LayerMask whatIsGround, whatIsPlayer;
-
+    public Animator anim;
     public Transform shootingPoint;
 
-    public Vector3 walkPoint;
+    [Header("Ranges")]
+    public float sightRange = 15f;
+    public float attackRange = 10f;
+    public LayerMask whatIsGround, whatIsPlayer;
+
+    [Header("Patrol")]
+    private Vector3 walkPoint;
     bool walkPointSet;
-    public float walkPointRange;
+    public float walkPointRange = 10f;
 
-    public float timeBetweenAttacks;
+    [Header("Attack")]
+    public GameObject projectilePrefab;
+    public float timeBetweenAttacks = 2f;
     bool alreadyAttacked;
-    public GameObject projectile;
 
-    public float sightRange, attackRange;
-    public bool playerInSightRange, playerInAttackRange;
+    [Header("Projectile Settings")]
+    public float projectileSpeed = 15f;  
 
-    // 🔥 Animations
-    public Animator anim;
+    bool playerInSightRange;
+    bool playerInAttackRange;
 
     private void Awake()
     {
@@ -37,62 +42,80 @@ public class RobotVerdeScript : MonoBehaviour
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
 
-        if (!playerInSightRange && !playerInAttackRange) Patroling();
-        if (playerInSightRange && !playerInAttackRange) ChasePlayer();
-        if (playerInAttackRange && playerInSightRange) AttackPlayer();
+        if (!playerInSightRange && !playerInAttackRange) Patrol();
+        if (playerInSightRange && !playerInAttackRange) Chase();
+        if (playerInSightRange && playerInAttackRange) Attack();
     }
 
-    private void Patroling()
+    private void Patrol()
     {
         anim.SetBool("isWalking", true);
 
         if (!walkPointSet) SearchWalkPoint();
+        agent.SetDestination(walkPoint);
 
-        if (walkPointSet)
-            agent.SetDestination(walkPoint);
-
-        if ((transform.position - walkPoint).magnitude < 1f)
+        if (Vector3.Distance(transform.position, walkPoint) < 1f)
             walkPointSet = false;
     }
 
     private void SearchWalkPoint()
     {
-        float randomZ = Random.Range(-walkPointRange, walkPointRange);
-        float randomX = Random.Range(-walkPointRange, walkPointRange);
+        float rx = Random.Range(-walkPointRange, walkPointRange);
+        float rz = Random.Range(-walkPointRange, walkPointRange);
 
-        walkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
+        walkPoint = new Vector3(transform.position.x + rx, transform.position.y, transform.position.z + rz);
 
         if (Physics.Raycast(walkPoint, -transform.up, 2f, whatIsGround))
             walkPointSet = true;
     }
 
-    private void ChasePlayer()
+    private void Chase()
     {
         anim.SetBool("isWalking", true);
         agent.SetDestination(player.position);
     }
 
-    private void AttackPlayer()
+    private void Attack()
     {
         anim.SetBool("isWalking", false);
         agent.SetDestination(transform.position);
-        transform.LookAt(player);
+
+        transform.LookAt(player.position);
 
         if (!alreadyAttacked)
         {
-            // 🔥 Trigger del disparo SOLO una vez por ataque
             anim.SetTrigger("Shot");
 
-            Vector3 spawnPos = shootingPoint != null ? shootingPoint.position : transform.position;
-            Quaternion spawnRot = shootingPoint != null ? shootingPoint.rotation : transform.rotation;
-
-            Rigidbody rb = Instantiate(projectile, spawnPos, spawnRot).GetComponent<Rigidbody>();
-            rb.AddForce(shootingPoint.forward * 32f, ForceMode.Impulse);
-            rb.AddForce(shootingPoint.up * 8f, ForceMode.Impulse);
+            Invoke(nameof(ShootProjectile), 0.15f);
 
             alreadyAttacked = true;
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
         }
+    }
+
+    private void ShootProjectile()
+    {
+        GameObject proj = Instantiate(projectilePrefab, shootingPoint.position, Quaternion.identity);
+        Rigidbody rb = proj.GetComponent<Rigidbody>();
+
+        Vector3 target = player.position;
+
+        Vector3 dir = target - shootingPoint.position;
+        Vector3 dirXZ = new Vector3(dir.x, 0f, dir.z);
+        Vector3 forward = dirXZ.normalized;
+
+    
+        float distance = dirXZ.magnitude;
+
+        //  altura automática para la parábola
+        float autoUpward = Mathf.Clamp(distance / 6f, 1.2f, 6f);
+
+        //  velocidad configurable (dificultad)
+        Vector3 force =
+            forward * projectileSpeed +
+            Vector3.up * autoUpward;
+
+        rb.AddForce(force, ForceMode.Impulse);
     }
 
     private void ResetAttack()
@@ -102,9 +125,9 @@ public class RobotVerdeScript : MonoBehaviour
 
     private void OnDrawGizmosSelected()
     {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, attackRange);
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, sightRange);
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, attackRange);
     }
 }
