@@ -8,13 +8,12 @@ public class EnemyHealth : MonoBehaviour
     public int currentHealth;
 
     [Header("Optional Health Bar")]
-    public Slider healthSlider;   // Asignar SÓLO si el enemigo tiene barra
+    public Slider healthSlider;
 
-    void Start()
+    private void Start()
     {
         currentHealth = maxHealth;
 
-        // Si tiene slider, inicializarlo
         if (healthSlider != null)
         {
             healthSlider.maxValue = maxHealth;
@@ -26,31 +25,20 @@ public class EnemyHealth : MonoBehaviour
     {
         currentHealth -= damage;
 
-        // Actualizar slider
         if (healthSlider != null)
-        {
             healthSlider.value = currentHealth;
-        }
 
         if (currentHealth <= 0)
-        {
             Die();
-        }
     }
 
-    void Die()
+    private void Die()
     {
-        // Obtener el collider del enemigo (puede ser null, chequeamos)
         Collider col = GetComponent<Collider>();
 
         if (EnemyChecker.Instance != null)
         {
-            // Llamamos a la versión nueva que recibe la posición y el collider
             EnemyChecker.Instance.NotifyEnemyDied(transform.position, col);
-        }
-        else
-        {
-            Debug.LogWarning("EnemyChecker.Instance es null al morir un enemigo.");
         }
 
         Destroy(gameObject);

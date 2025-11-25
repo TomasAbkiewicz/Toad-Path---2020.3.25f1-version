@@ -11,7 +11,7 @@ public class EnemyChecker : MonoBehaviour
     public int enemiesRemaining;
     private bool upgradesSpawned = false;
 
-    private void Awake()
+    void Awake()
     {
         Instance = this;
     }
@@ -24,14 +24,8 @@ public class EnemyChecker : MonoBehaviour
         {
             upgradesSpawned = true;
 
-            // Siempre va a funcionar:
-            // Toma la posición real del enemigo
             Vector3 spawnPos = enemyPos;
-
-            // Le sumamos la altura del collider para que aparezca exactamente arriba
-            float height = enemyCollider.bounds.size.y;
-
-            spawnPos.y += height * 0.8f; // Ajustable. 1f = exacto arriba
+            spawnPos.y += 1f; // un pequeño lift
 
             SpawnUpgradesAtPosition(spawnPos);
         }
@@ -44,7 +38,5 @@ public class EnemyChecker : MonoBehaviour
         Instantiate(upgradePrefab1, pos + new Vector3(-spread, 0, 0), Quaternion.identity);
         Instantiate(upgradePrefab2, pos, Quaternion.identity);
         Instantiate(upgradePrefab3, pos + new Vector3(spread, 0, 0), Quaternion.identity);
-
-        Debug.Log("Upgrades spawn en posición corregida.");
     }
 }
