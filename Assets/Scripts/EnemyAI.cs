@@ -39,7 +39,7 @@ public class EnemyAI : MonoBehaviour
 
     private void Update()
     {
-        // Mantener al enemigo recto en todo momento
+        // Mantener al enemigo recto
         Vector3 uprightEuler = transform.eulerAngles;
         uprightEuler.x = 0f;
         uprightEuler.z = 0f;
@@ -79,7 +79,6 @@ public class EnemyAI : MonoBehaviour
     {
         anim.SetBool("isWalking", true);
         agent.SetDestination(player.position);
-
         RotateTowardsPlayer();
     }
 
@@ -87,7 +86,6 @@ public class EnemyAI : MonoBehaviour
     {
         anim.SetBool("isWalking", false);
         agent.SetDestination(transform.position);
-
         RotateTowardsPlayer();
 
         if (!alreadyAttacked)
@@ -103,7 +101,7 @@ public class EnemyAI : MonoBehaviour
     private void RotateTowardsPlayer()
     {
         Vector3 dir = player.position - transform.position;
-        dir.y = 0; // Bloquea inclinación
+        dir.y = 0;
 
         if (dir != Vector3.zero)
         {
@@ -112,20 +110,35 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
+    // ------------------------------------------
+    // SHOOT PROJECTILE FIXEADO (CORTA / LARGA DISTANCIA)
+    // ------------------------------------------
     private void ShootProjectile()
     {
         GameObject proj = Instantiate(projectilePrefab, shootingPoint.position, Quaternion.identity);
         Rigidbody rb = proj.GetComponent<Rigidbody>();
 
-        Vector3 target = player.position;
+        // Apunta al torso del player
+        Vector3 target = player.position + Vector3.up * 1.2f;
         Vector3 dir = target - shootingPoint.position;
 
+        float distance = dir.magnitude;
+
+        // --- TIRO CERCANO (recto y preciso) ---
+        if (distance < 3f)
+        {
+            Vector3 directDir = dir.normalized;
+            rb.AddForce(directDir * projectileSpeed, ForceMode.Impulse);
+            return;
+        }
+
+        // --- TIRO PARABÓLICO ---
         Vector3 dirXZ = new Vector3(dir.x, 0f, dir.z);
         Vector3 forward = dirXZ.normalized;
 
-        float distance = dirXZ.magnitude;
+        float horizontalDistance = dirXZ.magnitude;
 
-        float autoUpward = Mathf.Clamp(distance / 6f, 1.2f, 6f);
+        float autoUpward = Mathf.Clamp(horizontalDistance / 6f, 1.2f, 6f);
 
         Vector3 force =
             forward * projectileSpeed +

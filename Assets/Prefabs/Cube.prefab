@@ -112,7 +112,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 2
   percent: 0.15
-  nextSceneName: LVL 2
+  nextSceneIndex: 2
 --- !u!114 &2151905650158691916
 MonoBehaviour:
   m_ObjectHideFlags: 0

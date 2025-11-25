@@ -38,6 +38,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 279577570495439143}
     m_Modifications:
+    - target: {fileID: 1260857374876087235, guid: 3907a8a59c408824788bace019bd6f13, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.66
+      objectReference: {fileID: 0}
     - target: {fileID: 2201935513500919191, guid: 3907a8a59c408824788bace019bd6f13, type: 3}
       propertyPath: enemyHealthBar
       value: 
@@ -182,8 +186,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 6.2522264, y: 1.765042, z: 3.0075397}
-  m_Center: {x: 0.008864164, y: 0.3825211, z: 0.5936823}
+  m_Size: {x: 3.96189, y: 1.765042, z: 2.269289}
+  m_Center: {x: 0.05292809, y: 0.3825211, z: 0.22455692}
 --- !u!95 &7193370956290848713
 Animator:
   serializedVersion: 3

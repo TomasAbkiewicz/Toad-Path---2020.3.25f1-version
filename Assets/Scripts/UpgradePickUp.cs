@@ -11,8 +11,8 @@ public class UpgradePickUp : MonoBehaviour
     [Header("Porcentaje (ej: 0.15 = 15%)")]
     public float percent = 0.15f;
 
-    [Header("Nombre de la escena siguiente (opcional)")]
-    public string nextSceneName = "LVL 2";
+    [Header("Índice de la escena siguiente en Build Settings")]
+    public int nextSceneIndex = -1; // -1 = no cambiar escena
 
     private bool used = false;
 
@@ -20,7 +20,6 @@ public class UpgradePickUp : MonoBehaviour
     {
         if (used) return;
 
-        // ⭐⭐ Cambio importante acá ⭐⭐
         if (!other.CompareTag("whatIsPlayer")) return;
 
         var stats = PlayerStatsPersistent.instance;
@@ -30,6 +29,7 @@ public class UpgradePickUp : MonoBehaviour
             return;
         }
 
+        // Aplicar mejora
         switch (type)
         {
             case UpgradeType.MoreDamage:
@@ -47,9 +47,11 @@ public class UpgradePickUp : MonoBehaviour
 
         used = true;
 
-        if (!string.IsNullOrEmpty(nextSceneName))
+        // Cambiar de escena SOLO si configuraste un índice válido
+        if (nextSceneIndex >= 0)
         {
-            SceneManager.LoadScene(nextSceneName);
+            SceneManager.LoadScene(nextSceneIndex);
+            DynamicGI.UpdateEnvironment();
         }
     }
 }
