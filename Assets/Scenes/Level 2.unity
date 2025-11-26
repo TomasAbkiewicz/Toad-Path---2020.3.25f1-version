@@ -745,6 +745,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1933334016262850085, guid: 25c3fa1185db07845a91c6f9aa0daad4, type: 3}
+      propertyPath: maxHealth
+      value: 80
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 25c3fa1185db07845a91c6f9aa0daad4, type: 3}
 --- !u!1001 &15741216
@@ -17251,6 +17255,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PrefabRobotCaC (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7453992870003723410, guid: 6ec7ee3688834ca439fe0f219b3857e3, type: 3}
+      propertyPath: maxHealth
+      value: 70
+      objectReference: {fileID: 0}
     - target: {fileID: 7453992870189149284, guid: 6ec7ee3688834ca439fe0f219b3857e3, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -27902,6 +27910,10 @@ PrefabInstance:
     - target: {fileID: 3980045809538753291, guid: 6ec7ee3688834ca439fe0f219b3857e3, type: 3}
       propertyPath: m_Center.y
       value: 1.5847759
+      objectReference: {fileID: 0}
+    - target: {fileID: 7453992870003723410, guid: 6ec7ee3688834ca439fe0f219b3857e3, type: 3}
+      propertyPath: maxHealth
+      value: 70
       objectReference: {fileID: 0}
     - target: {fileID: 7453992870189149284, guid: 6ec7ee3688834ca439fe0f219b3857e3, type: 3}
       propertyPath: m_AnchorMax.x
@@ -48070,6 +48082,18 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1933334016262850085, guid: 25c3fa1185db07845a91c6f9aa0daad4, type: 3}
+      propertyPath: maxHealth
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1933334016262850137, guid: 25c3fa1185db07845a91c6f9aa0daad4, type: 3}
+      propertyPath: sightRange
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1933334016262850137, guid: 25c3fa1185db07845a91c6f9aa0daad4, type: 3}
+      propertyPath: timeBetweenAttacks
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 25c3fa1185db07845a91c6f9aa0daad4, type: 3}
 --- !u!1001 &1583519067
@@ -49378,6 +49402,18 @@ PrefabInstance:
     - target: {fileID: 1933334015583993916, guid: 25c3fa1185db07845a91c6f9aa0daad4, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1933334016262850085, guid: 25c3fa1185db07845a91c6f9aa0daad4, type: 3}
+      propertyPath: maxHealth
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1933334016262850137, guid: 25c3fa1185db07845a91c6f9aa0daad4, type: 3}
+      propertyPath: sightRange
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 1933334016262850137, guid: 25c3fa1185db07845a91c6f9aa0daad4, type: 3}
+      propertyPath: timeBetweenAttacks
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 25c3fa1185db07845a91c6f9aa0daad4, type: 3}
