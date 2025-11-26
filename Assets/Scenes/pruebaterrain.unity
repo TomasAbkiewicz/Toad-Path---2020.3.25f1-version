@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 1232132504}
-  m_IndirectSpecularColor: {r: 0.73023766, g: 0.7889797, b: 0.84985757, a: 1}
+  m_IndirectSpecularColor: {r: 0.7302393, g: 0.7889812, b: 0.84985924, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2443,6 +2443,11 @@ PrefabInstance:
 --- !u!1 &119968859 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5996930178976274104, guid: 24d1aa3e1e4272e4a9931b8f2b4b9e3e, type: 3}
+  m_PrefabInstance: {fileID: 5996930180582679397}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &119968860 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5996930178976274107, guid: 24d1aa3e1e4272e4a9931b8f2b4b9e3e, type: 3}
   m_PrefabInstance: {fileID: 5996930180582679397}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &119968861
@@ -10505,6 +10510,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PrefabRobotCaC
       objectReference: {fileID: 0}
+    - target: {fileID: 7453992870003723410, guid: 6ec7ee3688834ca439fe0f219b3857e3, type: 3}
+      propertyPath: maxHealth
+      value: 80
+      objectReference: {fileID: 0}
     - target: {fileID: 7453992870189149284, guid: 6ec7ee3688834ca439fe0f219b3857e3, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -17034,6 +17043,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PrefabRobotCaC (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7453992870003723410, guid: 6ec7ee3688834ca439fe0f219b3857e3, type: 3}
+      propertyPath: maxHealth
+      value: 70
+      objectReference: {fileID: 0}
     - target: {fileID: 7453992870189149284, guid: 6ec7ee3688834ca439fe0f219b3857e3, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -20472,7 +20485,7 @@ MonoBehaviour:
   upgradePrefab1: {fileID: 2151905650158691926, guid: 58a757d312920974ebe51a2caa07b066, type: 3}
   upgradePrefab2: {fileID: 3546814952873484292, guid: ba1f4db5ced429b48a0c0bb156b62449, type: 3}
   upgradePrefab3: {fileID: 8652146272919989750, guid: b47dd5641d24b5c46a3b276bdaa776db, type: 3}
-  enemiesRemaining: 6
+  enemiesRemaining: 5
 --- !u!4 &1528814277
 Transform:
   m_ObjectHideFlags: 0
@@ -21886,6 +21899,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2288057154071605710, guid: ead9121e0be62a34586cc76922e1daff, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 119968860}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ead9121e0be62a34586cc76922e1daff, type: 3}
 --- !u!4 &1659263321 stripped
