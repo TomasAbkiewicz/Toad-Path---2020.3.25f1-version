@@ -88,16 +88,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7604339467261574774, guid: 3907a8a59c408824788bace019bd6f13, type: 3}
       propertyPath: attackRange
-      value: 15
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 7604339467261574774, guid: 3907a8a59c408824788bace019bd6f13, type: 3}
       propertyPath: projectileSpeed
-      value: 30
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 7604339467261574774, guid: 3907a8a59c408824788bace019bd6f13, type: 3}
       propertyPath: projectilePrefab
       value: 
-      objectReference: {fileID: 6856823063662307837, guid: c32821269265f7d4bb3fe11fa1ee145c, type: 3}
+      objectReference: {fileID: 5115157778739231659, guid: 2a3455c220a846e46a94ad4f7ca45fe8, type: 3}
+    - target: {fileID: 7604339467261574774, guid: 3907a8a59c408824788bace019bd6f13, type: 3}
+      propertyPath: timeBetweenAttacks
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8581150344522410273, guid: 3907a8a59c408824788bace019bd6f13, type: 3}
       propertyPath: m_Name
       value: Lil Robot

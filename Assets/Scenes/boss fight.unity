@@ -1000,7 +1000,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5991525687246272634, guid: 7e98a59c53186cf44af1a727b886a7f3, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5991525687246272634, guid: 7e98a59c53186cf44af1a727b886a7f3, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4217,7 +4217,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 804451724}
-  - component: {fileID: 804451723}
   - component: {fileID: 804451725}
   m_Layer: 0
   m_Name: GameManager
@@ -4226,24 +4225,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &804451723
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 804451722}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 38c12d92a0421dd44b354945aecdbbd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  baseHealth: 100
-  baseDamage: 10
-  baseMoveSpeed: 7
-  currentHealth: 0
-  currentDamage: 0
-  currentMoveSpeed: 0
 --- !u!4 &804451724
 Transform:
   m_ObjectHideFlags: 0
@@ -13655,7 +13636,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5270200848364429909, guid: 7bc6683157debd14e8e73dd6baa9ade4, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5270200848364429909, guid: 7bc6683157debd14e8e73dd6baa9ade4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -13663,7 +13644,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5270200848364429909, guid: 7bc6683157debd14e8e73dd6baa9ade4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -8.33
+      value: -4.97
       objectReference: {fileID: 0}
     - target: {fileID: 5270200848364429909, guid: 7bc6683157debd14e8e73dd6baa9ade4, type: 3}
       propertyPath: m_LocalPosition.z

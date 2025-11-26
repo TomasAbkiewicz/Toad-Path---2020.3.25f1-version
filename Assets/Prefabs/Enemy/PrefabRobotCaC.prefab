@@ -1025,11 +1025,11 @@ MonoBehaviour:
   attackPoint: {fileID: 6046583079526834546}
   playerTag: whatIsPlayer
   walkPointRange: 8
-  sightRange: 10
-  attackRange: 2
-  damage: 10
+  sightRange: 20
+  attackRange: 3
+  damage: 15
   timeBetweenAttacks: 1
-  damageDelay: 0.1
+  damageDelay: 0.3
   attackRadius: 1.5
 --- !u!195 &1204487806468494542
 NavMeshAgent:

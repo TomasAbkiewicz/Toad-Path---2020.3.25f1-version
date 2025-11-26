@@ -691,6 +691,21 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &6712485479958766825
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5035845091763423951}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d48c0841df76594fa57861f9ede213d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 500
+  currentHealth: 0
+  healthSlider: {fileID: 6712485479268664573}
 --- !u!114 &8880853966703227122
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -716,21 +731,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8192
   walkPointRange: 0
-  projectilePrefab: {fileID: 6856823063662307837, guid: c32821269265f7d4bb3fe11fa1ee145c, type: 3}
-  timeBetweenAttacks: 2
-  projectileSpeed: 15
---- !u!114 &6712485479958766825
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5035845091763423951}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d48c0841df76594fa57861f9ede213d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 500
-  currentHealth: 0
-  healthSlider: {fileID: 6712485479268664573}
+  projectilePrefab: {fileID: 8780694521675788463, guid: 4cdaf3e7b7dab7f4ba9ac54c85d778d3, type: 3}
+  timeBetweenAttacks: 1
+  projectileSpeed: 30
